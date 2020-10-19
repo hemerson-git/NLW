@@ -22,3 +22,56 @@ It was developed during the 3rd NLW (Next Level Week) workshop, given by [Rocket
 
 ## 🎨 Layout Preview
 <img src='/NLW3/.github/happy_web.gif?raw=true'/>
+
+## 👨‍💻 Running
+
+<table style="width:100%;">
+<tr>
+<td align="center"> <strong>Using Yarn</strong> </td> <td align="center"> <strong>Using npm</strong> </td>
+</tr>
+<tr>
+<td>
+
+
+```bash
+# Install back-end dependencies
+$ cd backend && yarn
+
+# TypeORM Migrations
+$ yarn typeorm migration:run
+
+# Execute the NodeJS API
+$ yarn dev
+
+# Install front-end web dependencies
+$ cd ../web && yarn
+
+# Run ReactJS front-end
+$ yarn start
+```
+
+
+</td>
+<td>
+
+
+```bash
+# Install back-end dependecies
+$ cd backend && npm install
+
+# Run TypeORM Migrations
+$ npm run typeorm migration:run
+
+# Run Node.js API
+$ npm run dev
+
+# Install front-end web dependencies
+$ cd ../web && npm install
+
+# Run ReactJS front-end
+$ npm start
+```
+
+
+</td>
+</table>
