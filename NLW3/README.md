@@ -1,5 +1,5 @@
 <p align='center'>
-  <img src='/NLW3/.github/Logo.png?raw=true'/>
+  <img src='/NLW3/.github/Logo.png?raw=true' style='background: ##17d6eb; padding: 20px; border-radius: 20px;'/>
 </p>
 
 <h1 align="center">
