@@ -3,4 +3,4 @@
 ## Aplicativo Web do Happy
 <p>App desenvolvido durante a NLW da Rocketseat para encontrar e cadastrar orfanatos em sua cidade</p>
 
-<img src='/hemerson-git/NLW/blob/master/NLW3/web/.github/happy_web.gif?raw=true' alt='app preview' style='max-width: 80%;'>
+<img src='/NLW3/web/.github/happy_web.gif?raw=true' alt='app preview' style='max-width: 80%;'>
