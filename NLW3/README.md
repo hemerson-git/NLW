@@ -48,6 +48,12 @@ $ cd ../web && yarn
 
 # Run ReactJS front-end
 $ yarn start
+
+# Install mobile dependencies
+$ cd ../mobile && yarn
+
+# Run React-Native 
+$ expo start
 ```
 
 
