@@ -32,7 +32,7 @@ export default ChallengesContext;
 
 export function ChallengeProvider({ children } : ChallengesProviderProps) {
   const [level, setLevel] = useState(1);
-  const [currentExperience, setCurrenteExperience] = useState(25);
+  const [currentExperience, setCurrenteExperience] = useState(0);
   const [challengesCompleted, setChallengesCompleted] = useState(0);
   const [isDarkModActive, setIsDarkModActive] = useState(false);
 
@@ -44,11 +44,19 @@ export function ChallengeProvider({ children } : ChallengesProviderProps) {
     setLevel(level + 1);
   }
 
-  function startNewChallenge() {
+  async function startNewChallenge() {
     const randomChallengeIndex = Math.floor(Math.random() * challenges.length);
     const challenge = challenges[randomChallengeIndex];
 
     setActiveChallenge(challenge);
+
+    new Audio('/final_countdown.mp3').play();
+    
+    if(await Notification.requestPermission() === 'granted') {
+      new Notification('Novo desafio 🎉', {
+        body: `Valendo ${challenge.amount}XP`
+      })
+    }
   }
 
   function resetChallenge() {
@@ -85,7 +93,7 @@ export function ChallengeProvider({ children } : ChallengesProviderProps) {
     if(isDark) {
       setIsDarkModActive(true);
     }
-  })
+  }, []);
   
   return (
     <ChallengesContext.Provider 
