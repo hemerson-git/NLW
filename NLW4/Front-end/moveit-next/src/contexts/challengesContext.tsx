@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from 'react';
+import { createContext, ReactNode, useEffect, useState } from 'react';
 
 import challenges from '../../challenges.json';
 
@@ -22,7 +22,8 @@ interface ChallengesContextData {
   levelUp: () => void;
   startNewChallenge: () => void;
   resetChallenge: () => void;
-  changeDarkModStatus: () => void;
+  changeDarkModStatus: (boolean) => void;
+  completeChallenge: () => void;
 }
 
 const ChallengesContext = createContext({} as ChallengesContextData);
@@ -54,9 +55,37 @@ export function ChallengeProvider({ children } : ChallengesProviderProps) {
     setActiveChallenge(null);
   }
   
-  function changeDarkModStatus() {
-    setIsDarkModActive(!isDarkModActive);
+  function changeDarkModStatus(status) {
+    setIsDarkModActive(!status);
+    localStorage.setItem('isDark', String(!isDarkModActive));
   }
+  
+  function completeChallenge() {
+    if (!activeChallenge) {
+      return;
+    }
+
+    const { amount } = activeChallenge;
+
+    let finalExperience = currentExperience + amount;
+
+    if (finalExperience >= experienceToNextLevel) {
+      finalExperience -= experienceToNextLevel;
+      levelUp();
+    }
+
+    setCurrenteExperience(finalExperience);
+    setActiveChallenge(null);
+    setChallengesCompleted(challengesCompleted + 1);
+  }
+
+  useEffect(() => {
+    const isDark = JSON.parse(localStorage.getItem('isDark'));
+
+    if(isDark) {
+      setIsDarkModActive(true);
+    }
+  })
   
   return (
     <ChallengesContext.Provider 
@@ -70,7 +99,8 @@ export function ChallengeProvider({ children } : ChallengesProviderProps) {
         resetChallenge,
         experienceToNextLevel,
         isDarkModActive,
-        changeDarkModStatus
+        changeDarkModStatus,
+        completeChallenge
       }}
     >
       {children}

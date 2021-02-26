@@ -8,13 +8,13 @@ function ThemeButton() {
   return (
     <div className={styles.themeButtonContainer}>
       <button 
-        onClick={ changeDarkModStatus }
+        onClick={ () => changeDarkModStatus(isDarkModActive)}
       >
         {isDarkModActive ? (
-          <img src="icons/off.png" alt="off"/>
-          ) : (
           <img src="icons/on.png" alt="off"/>
-        )
+          ) : (
+            <img src="icons/off.png" alt="off"/>
+          )
       }
       </button>
     </div>

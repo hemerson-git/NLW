@@ -5,7 +5,7 @@ import ChallengesContext from "../contexts/challengesContext";
 import styles from '../styles/components/Profile.module.css';
 
 function Profile() {
-  const { isDarkModActive } = useContext(ChallengesContext);
+  const { isDarkModActive, level } = useContext(ChallengesContext);
   const dark = isDarkModActive ? styles.dark : '';
   
   return(
@@ -16,7 +16,7 @@ function Profile() {
         <strong>Hemerson Oliveira</strong>
         <p>
           <img src="icons/level.svg" alt="Level"/>
-          Level 1
+          Level {level}
         </p>
       </div>
     </div>

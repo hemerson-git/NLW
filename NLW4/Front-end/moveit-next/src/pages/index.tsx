@@ -10,6 +10,7 @@ import ChallangeBox from "../components/ChallengeBox";
 import ThemeButton from "../components/ThemeButton";
 import { useContext } from "react";
 import ChallengesContext from "../contexts/challengesContext";
+import CountdownProvider from "../contexts/CountdownContext";
 
 export default function Home() {
   const { isDarkModActive } = useContext(ChallengesContext);
@@ -26,17 +27,19 @@ export default function Home() {
 
         <ThemeButton />
 
-        <section>
-          <div>
-            <Profile />
-            <CompletedChallenges />
-            <Countdown />
-          </div>
+        <CountdownProvider>
+          <section>
+            <div>
+              <Profile />
+              <CompletedChallenges />
+              <Countdown />
+            </div>
 
-          <div>
-            <ChallangeBox />
-          </div>
-        </section>
+            <div>
+              <ChallangeBox />
+            </div>
+          </section>
+        </CountdownProvider>
       </div>
     </div>
   )

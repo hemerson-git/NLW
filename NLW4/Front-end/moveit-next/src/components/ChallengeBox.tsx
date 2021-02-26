@@ -3,7 +3,7 @@ import challengesContext from '../contexts/challengesContext';
 import styles from '../styles/components/ChallengeBox.module.css';
 
 function ChallangeBox () {
-  const { activeChallenge, resetChallenge, isDarkModActive } = useContext(challengesContext);
+  const { activeChallenge, resetChallenge, isDarkModActive, completeChallenge } = useContext(challengesContext);
   const dark = isDarkModActive ? styles.dark : '';
   
   return (
@@ -30,6 +30,7 @@ function ChallangeBox () {
             <button 
               type="button"
               className={styles.challengeSuccededButton}
+              onClick={completeChallenge}
             >
               Completei
             </button>
