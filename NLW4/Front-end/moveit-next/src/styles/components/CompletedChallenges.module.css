@@ -10,6 +10,10 @@
   font-weight: 500;
 }
 
+.completedChallengesContainer.dark {
+  border-color: var(--pink);
+}
+
 .completedChallengesContainer span:first-child {
   font-size: 1.25rem;
 }

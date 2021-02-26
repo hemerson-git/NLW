@@ -1,0 +1,13 @@
+.themeButtonContainer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.themeButtonContainer button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transform: rotate(195deg);
+}

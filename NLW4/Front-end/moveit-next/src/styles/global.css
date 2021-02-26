@@ -10,6 +10,12 @@
   --blue: #5953B8;
   --blue-dark: #4953b8;
   --blue-twitter: #2AA9E0;
+
+  --background-dark: #191622;
+  --background-semidark: #44475a;
+  --purple: #988BC7;
+  --foreground: #E1E1E6;
+  --pink: #FF79C6;
 }
 
 @media (max-width: 1080px) {
@@ -34,6 +40,10 @@
 body {
   background-color: var(--background);
   color: var(--text);
+}
+
+body.dark {
+  background-color: var(--background-dark);
 }
 
 body, input, textarea, button {

@@ -1,10 +1,15 @@
 import { Profiler } from "inspector";
+import { useContext } from "react";
+import ChallengesContext from "../contexts/challengesContext";
 
 import styles from '../styles/components/Profile.module.css';
 
 function Profile() {
+  const { isDarkModActive } = useContext(ChallengesContext);
+  const dark = isDarkModActive ? styles.dark : '';
+  
   return(
-    <div className={styles.profileContainer}>
+    <div className={`${styles.profileContainer} ${dark}`}>
       <img src="https://github.com/hemerson-git.png" alt="Hemerson Oliveira"/>
 
       <div>

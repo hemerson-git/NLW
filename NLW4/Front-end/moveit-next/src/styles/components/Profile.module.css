@@ -21,6 +21,10 @@
   color: var(--title);
 }
 
+.profileContainer.dark div strong {
+  color: var(--purple);
+}
+
 .profileContainer div p {
   font-size: 1rem;
   margin-top: 0.5rem;
