@@ -55,9 +55,9 @@ function Countdown() {
             <button type="button" className={styles.countdownButton} onClick={startCountdown}>
               Iniciar um cíclo
             </button>
-          )};
+          )}
         </>
-      )};
+      )}
     </>
   );
 }

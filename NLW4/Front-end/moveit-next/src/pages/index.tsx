@@ -27,12 +27,12 @@ export default function Home(props : HomeProps) {
   const dark = isDarkThemeActive ? styles.dark : '';
   
   return (
-    <ChallengeProvider
-      level={props.level}
-      currentExperience={props.currentExperience}
-      challengesCompleted={props.challengesCompleted}
-    >
-      <div className={`${styles.pBody} ${dark}`}> 
+    <div className={`${styles.pBody} ${dark}`}> 
+      <ChallengeProvider
+        level={props.level}
+        currentExperience={props.currentExperience}
+        challengesCompleted={props.challengesCompleted}
+      >
         <div className={`${styles.container} ${dark}`}>
           <Head>
             <title>Ínicio | Moveit</title>
@@ -56,8 +56,8 @@ export default function Home(props : HomeProps) {
             </section>
           </CountdownProvider>
         </div>
-      </div>
-    </ChallengeProvider>
+      </ChallengeProvider>
+    </div>
   )
 }
 

@@ -1,8 +1,9 @@
-.p-body {
+.pBody {
   background-color: var(--background);
+  height: 100%;
 }
 
-.p-body.dark {
+.pBody.dark {
   background-color: var(--background-dark);
 }
 
@@ -11,7 +12,7 @@
   max-width: 992px;
   margin: 0 auto;
   padding: 2.5rem 2rem;
-
+  
   display: flex;
   flex-direction: column;
 }
@@ -22,6 +23,12 @@
   grid-template-columns: 1fr 1fr;
   gap: 6.25rem;
   align-content: center
+}
+
+@media (max-width: 575px) {
+  .container section {
+    grid-template-columns: 1fr;
+  }
 }
 
 .dark {
