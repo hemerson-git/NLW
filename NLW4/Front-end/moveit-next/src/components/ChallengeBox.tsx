@@ -1,13 +1,15 @@
 import { useContext } from 'react';
 import challengesContext from '../contexts/challengesContext';
 import { CountdownContext } from '../contexts/CountdownContext';
+import ThemeContext from '../contexts/ThemeContext';
 import styles from '../styles/components/ChallengeBox.module.css';
 
 function ChallangeBox () {
-  const { activeChallenge, resetChallenge, isDarkModActive, completeChallenge } = useContext(challengesContext);
+  const { activeChallenge, resetChallenge, completeChallenge } = useContext(challengesContext);
   const { resetCountdown } = useContext(CountdownContext);
+  const { isDarkThemeActive } = useContext(ThemeContext);
   
-  const dark = isDarkModActive ? styles.dark : '';
+  const dark = isDarkThemeActive ? styles.dark : '';
   
   function handleChallengeSucceeded() {
     completeChallenge();

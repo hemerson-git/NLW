@@ -1,13 +1,12 @@
-import { useContext, useEffect, useState } from 'react';
-import ChallengesContext, { ChallengeProvider } from '../contexts/challengesContext';
+import { ThemeProvider } from '../contexts/ThemeContext';
 
 import '../styles/global.css';
 
 function MyApp({ Component, pageProps }) {  
   return (
-    <ChallengeProvider>
-      <Component {...pageProps} />
-    </ChallengeProvider>
+      <ThemeProvider>
+        <Component {...pageProps} />
+      </ThemeProvider>
   )
 }
 

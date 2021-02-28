@@ -1,12 +1,14 @@
 import { Profiler } from "inspector";
 import { useContext } from "react";
 import ChallengesContext from "../contexts/challengesContext";
+import ThemeContext from "../contexts/ThemeContext";
 
 import styles from '../styles/components/Profile.module.css';
 
 function Profile() {
-  const { isDarkModActive, level } = useContext(ChallengesContext);
-  const dark = isDarkModActive ? styles.dark : '';
+  const { level } = useContext(ChallengesContext);
+  const { isDarkThemeActive } = useContext(ThemeContext);
+  const dark = isDarkThemeActive ? styles.dark : '';
   
   return(
     <div className={`${styles.profileContainer} ${dark}`}>

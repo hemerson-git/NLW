@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from 'react';
-import ChallengesContext from '../contexts/challengesContext';
 import { CountdownContext } from '../contexts/CountdownContext';
+import ThemeContext from '../contexts/ThemeContext';
 import styles from '../styles/components/Countdown.module.css';
 
 function Countdown() {
-  const { isDarkModActive } = useContext(ChallengesContext);
+  const { isDarkThemeActive } = useContext(ThemeContext);
   const { 
     isActive, 
     hasFinished, 
@@ -14,7 +14,7 @@ function Countdown() {
     startCountdown 
   } = useContext(CountdownContext);
   
-  const dark = isDarkModActive ? styles.dark : '';
+  const dark = isDarkThemeActive ? styles.dark : '';
 
   const [minuteLeft, minuteRight] = String(minute).padStart(2, '0').split('');
   const [secondLeft, secondRight] = String(seconds).padStart(2, '0').split('');
@@ -58,10 +58,6 @@ function Countdown() {
           )};
         </>
       )};
-
-      
-
-
     </>
   );
 }

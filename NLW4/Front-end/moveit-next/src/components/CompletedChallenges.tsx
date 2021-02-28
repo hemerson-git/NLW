@@ -1,10 +1,12 @@
 import { useContext } from 'react';
 import ChallengesContext from '../contexts/challengesContext';
+import ThemeContext from '../contexts/ThemeContext';
 import styles from '../styles/components/CompletedChallenges.module.css';
 
 function CompletedChallenges () {
-  const { challengesCompleted, isDarkModActive } = useContext(ChallengesContext);
-  const dark = isDarkModActive ? styles.dark : '';
+  const { challengesCompleted } = useContext(ChallengesContext);
+  const { isDarkThemeActive } = useContext(ThemeContext);
+  const dark = isDarkThemeActive ? styles.dark : '';
   
   return (
     <div className={`${styles.completedChallengesContainer} ${dark}`}>

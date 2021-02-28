@@ -1,9 +1,13 @@
 import { createContext, ReactNode, useEffect, useState } from 'react';
-
+import Cookies from 'js-cookie';
 import challenges from '../../challenges.json';
+import LevelUpModal from '../components/LevelUpModal';
 
 interface ChallengesProviderProps {
   children: ReactNode;
+  level: number;
+  currentExperience: number;
+  challengesCompleted: number;
 }
 
 interface Challenge {
@@ -18,30 +22,39 @@ interface ChallengesContextData {
   challengesCompleted: number;
   experienceToNextLevel: number;
   activeChallenge: Challenge;
-  isDarkModActive: boolean;
   levelUp: () => void;
   startNewChallenge: () => void;
   resetChallenge: () => void;
-  changeDarkModStatus: (boolean) => void;
   completeChallenge: () => void;
+  closeLevelUpModal: () => void;
 }
 
 const ChallengesContext = createContext({} as ChallengesContextData);
 
 export default ChallengesContext;
 
-export function ChallengeProvider({ children } : ChallengesProviderProps) {
-  const [level, setLevel] = useState(1);
-  const [currentExperience, setCurrenteExperience] = useState(0);
-  const [challengesCompleted, setChallengesCompleted] = useState(0);
-  const [isDarkModActive, setIsDarkModActive] = useState(false);
+export function ChallengeProvider({ 
+  children, 
+  ...rest
+} : ChallengesProviderProps) {
+  const [level, setLevel] = useState(rest.level ?? 1);
+  const [currentExperience, setCurrenteExperience] = useState(rest.currentExperience ?? 1);
+  const [challengesCompleted, setChallengesCompleted] = useState(rest.challengesCompleted ?? 1);
 
   const [activeChallenge, setActiveChallenge] = useState(null);
 
   const experienceToNextLevel = Math.pow((level + 1) * 4, 2);
   
+  const [isLevelUpModalOpen, setIsLevelUpModalOpen] = useState(false);
+  
+  function closeLevelUpModal() {
+    setIsLevelUpModalOpen(false);
+  }
+  
   function levelUp () {
     setLevel(level + 1);
+    setIsLevelUpModalOpen(true);
+
   }
 
   async function startNewChallenge() {
@@ -63,11 +76,6 @@ export function ChallengeProvider({ children } : ChallengesProviderProps) {
     setActiveChallenge(null);
   }
   
-  function changeDarkModStatus(status) {
-    setIsDarkModActive(!status);
-    localStorage.setItem('isDark', String(!isDarkModActive));
-  }
-  
   function completeChallenge() {
     if (!activeChallenge) {
       return;
@@ -86,14 +94,12 @@ export function ChallengeProvider({ children } : ChallengesProviderProps) {
     setActiveChallenge(null);
     setChallengesCompleted(challengesCompleted + 1);
   }
-
+  
   useEffect(() => {
-    const isDark = JSON.parse(localStorage.getItem('isDark'));
-
-    if(isDark) {
-      setIsDarkModActive(true);
-    }
-  }, []);
+    Cookies.set('level', String(level));
+    Cookies.set('currentExperience', String(currentExperience));
+    Cookies.set('challengesCompleted', String(challengesCompleted));
+  }, [level, currentExperience, challengesCompleted]);
   
   return (
     <ChallengesContext.Provider 
@@ -106,12 +112,14 @@ export function ChallengeProvider({ children } : ChallengesProviderProps) {
         activeChallenge,
         resetChallenge,
         experienceToNextLevel,
-        isDarkModActive,
-        changeDarkModStatus,
-        completeChallenge
+        completeChallenge,
+        closeLevelUpModal
       }}
     >
       {children}
+
+      {isLevelUpModalOpen && <LevelUpModal />}
+      
     </ChallengesContext.Provider>
   )
 }

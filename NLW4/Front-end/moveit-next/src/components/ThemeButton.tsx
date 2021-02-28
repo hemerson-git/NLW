@@ -1,16 +1,16 @@
 import { useContext } from 'react';
-import ChallengesContext from '../contexts/challengesContext';
+import ThemeContext from '../contexts/ThemeContext';
 import styles from '../styles/components/ThemeButton.module.css';
 
 function ThemeButton() {
-  const { isDarkModActive, changeDarkModStatus } = useContext(ChallengesContext);
+  const { isDarkThemeActive, changeDarkModStatus } = useContext(ThemeContext);
   
   return (
     <div className={styles.themeButtonContainer}>
       <button 
-        onClick={ () => changeDarkModStatus(isDarkModActive)}
+        onClick={ () => changeDarkModStatus(!isDarkThemeActive)}
       >
-        {isDarkModActive ? (
+        {isDarkThemeActive ? (
           <img src="icons/on.png" alt="off"/>
           ) : (
             <img src="icons/off.png" alt="off"/>
