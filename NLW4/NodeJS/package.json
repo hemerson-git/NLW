@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "tsnd --transpile-only --ignore-watch node_modules src/server.ts"
+    "dev": "tsnd --transpile-only --ignore-watch node_modules src/server.ts",
+    "typeorm": "tsnd node_modules/typeorm/cli.js"
   },
   "keywords": [],
   "author": "",
