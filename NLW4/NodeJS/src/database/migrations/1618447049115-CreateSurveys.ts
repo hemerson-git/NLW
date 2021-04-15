@@ -1,6 +1,7 @@
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-export class createSurveys1618445479165 implements MigrationInterface {
+export class CreateSurveys1618447049115 implements MigrationInterface {
+
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(new Table({
             name: "surveys",
@@ -13,7 +14,7 @@ export class createSurveys1618445479165 implements MigrationInterface {
 
                 {
                     name: "title",
-                    type: "varchar",
+                    type: "varchar"
                 },
 
                 {
