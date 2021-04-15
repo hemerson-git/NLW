@@ -1,13 +1,15 @@
 import { Request, Response } from 'express';
 
-import { getRepository } from "typeorm";
+import { getCustomRepository, getRepository } from "typeorm";
 import { Survey } from "../models/Survey";
+
+import { SurveysRepository } from '../repositories/SurveysRepository';
 
 class SurveyController {
   async index(request: Request, response: Response) {
-    const surveyRepository = getRepository(Survey);
+    const surveyRepository = getCustomRepository(SurveysRepository);
 
-    const surveys = surveyRepository.find();
+    const surveys = await surveyRepository.find();
 
     return response.json(surveys);
   }
