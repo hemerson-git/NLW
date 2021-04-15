@@ -15,7 +15,7 @@ class SurveyController {
   }
 
   async create(request: Request, response: Response) {
-    const surveyRepository = getRepository(Survey);
+    const surveyRepository = getCustomRepository(SurveysRepository);
 
     const { title, description } = request.body;
 
@@ -24,6 +24,15 @@ class SurveyController {
     const newSurvey =  await surveyRepository.save(survey);
 
     return response.status(201).json(newSurvey);
+  }
+
+  async show(request: Request, response: Response) {
+    const surveyRepository = getCustomRepository(SurveysRepository);
+    const { id } = request.params;
+
+    const survey = await surveyRepository.findOneOrFail(id);
+
+    return response.json(survey);
   }
 }
 

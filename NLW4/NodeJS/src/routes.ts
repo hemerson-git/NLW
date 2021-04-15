@@ -13,6 +13,7 @@ router.get('/users', userController.index);
 router.get('/users/:id', userController.show);
 
 router.get('/surveys', surveysController.index);
+router.get('/surveys/:id', surveysController.show);
 router.post('/surveys', surveysController.create);
 
 export { router };
