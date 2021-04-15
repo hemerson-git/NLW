@@ -6,6 +6,8 @@
     "./src/database/migrations/*.ts"
   ],
   
+  "logging": true,
+  
   "entities": [
     "./src/models/*.ts"
   ],

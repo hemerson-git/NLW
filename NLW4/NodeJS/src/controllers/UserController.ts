@@ -1,10 +1,11 @@
 import { Request, Response } from 'express';
-import { getRepository } from 'typeorm';
+import { getCustomRepository, getRepository } from 'typeorm';
 import { User } from '../models/User';
+import { UsersRepository } from '../repositories/UsersRepository';
 
 export class UserController {
   async index(request: Request, response: Response) {
-    const usersRepository = getRepository(User);
+    const usersRepository = getCustomRepository(UsersRepository);
 
     const users = await usersRepository.find();
 
