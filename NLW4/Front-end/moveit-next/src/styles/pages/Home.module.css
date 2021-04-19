@@ -27,10 +27,6 @@
 
 @media (max-width: 575px) {
   .container section {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
   }
-}
-
-.dark {
-  background-color: var(--background-dark);
 }
