@@ -10,6 +10,7 @@ import fonts from "../styles/fonts";
 
 import api from "../services/api";
 import Load from "../components/Load";
+import { useNavigation } from "@react-navigation/core";
 interface EnvironmentProps {
   key: string;
   title: string;
@@ -37,7 +38,8 @@ function PlantSelect() {
 
   const [page, setPage] = useState(1);
   const [loadingMore, setLoadingMore] = useState(false);
-  const [loadedAll, setLoadedAll] = useState(false);
+
+  const navigation = useNavigation();
   
   useEffect(() => {
     async function fetchEnvironments() {
@@ -98,6 +100,10 @@ function PlantSelect() {
     fetchPlants();
   }
   
+  function handlePlantSelect(plant: PlantProps) {
+    navigation.navigate('PlantSave');
+  }
+  
   if(loading) {
     return <Load />
   }
@@ -116,7 +122,7 @@ function PlantSelect() {
           renderItem={({item}) => (
             <EnviromentButton 
               title={item.title} 
-              key={item.key}
+              key={String(item.key)}
               active={selectedEnvironment === item.key}
               onPress={() => handleSelectEnvironment(item.key)}
             />
@@ -140,8 +146,9 @@ function PlantSelect() {
               }}
               renderItem={({item}) => (
                 <PlantCardPrimary 
-                  key={item.id} 
+                  key={String(item.id)} 
                   data={item}
+                  onPress={() => handlePlantSelect(item)}
                 />
               )}
             />

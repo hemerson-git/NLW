@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {
+  Alert,
   Dimensions,
   Keyboard,
   KeyboardAvoidingView,
@@ -11,11 +12,12 @@ import {
   View,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { TouchableWithoutFeedback } from "react-native-gesture-handler";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import CustomButton from "../components/CustomButton";
 import colors from "../styles/colors";
 import fonts from "../styles/fonts";
-import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
 function UserIdentification() {
   const [isFocused, setIsFocused] = useState(false);
@@ -30,7 +32,12 @@ function UserIdentification() {
     setIsFocused(true);
   }
 
-  function handleConfirmation() {
+  async function handleConfirmation() {
+    if(!user.trim()) {
+      return Alert.alert('Me diz como chamar você 😢', 'Por favor, Insira o seu Nome!')
+    }
+
+    await AsyncStorage.setItem('@plantmanager:user', user.trim());
     navigation.navigate("Confirmation");
   }
 
