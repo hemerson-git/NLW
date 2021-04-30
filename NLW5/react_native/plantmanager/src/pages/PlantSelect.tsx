@@ -1,32 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { ActivityIndicator, FlatList, StyleSheet, Text, View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 import EnviromentButton from "../components/EnvironmentButton";
 import Header from "../components/Header";
 import PlantCardPrimary from "../components/PlantCardPrimary";
+import Load from "../components/Load";
 
 import colors from "../styles/colors";
 import fonts from "../styles/fonts";
 
 import api from "../services/api";
-import Load from "../components/Load";
-import { useNavigation } from "@react-navigation/core";
+import { PlantProps } from "../libs/storage";
+
 interface EnvironmentProps {
   key: string;
   title: string;
-}
-
-interface PlantProps {
-  id: number;
-  name: string;
-  about: string;
-  water_tips: string;
-  photo: string;
-  environments: [string];
-  frequency: {
-    times: number;
-    repeat_every: string;
-  }
 }
 
 function PlantSelect() {
@@ -101,7 +90,7 @@ function PlantSelect() {
   }
   
   function handlePlantSelect(plant: PlantProps) {
-    navigation.navigate('PlantSave');
+    navigation.navigate('PlantSave', { plant });
   }
   
   if(loading) {
