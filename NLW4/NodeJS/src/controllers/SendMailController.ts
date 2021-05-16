@@ -4,6 +4,7 @@ import { SurveysRepository } from '../repositories/SurveysRepository';
 import SurveysUsersRepository from '../repositories/SurveysUsersRepository';
 import { UsersRepository } from '../repositories/UsersRepository';
 import SendMailService from '../services/SendMailService';
+import { resolve } from 'path';
 
 class SendMailController {
     async execute(request: Request, response: Response) {
@@ -26,6 +27,7 @@ class SendMailController {
       }
 
       // Salvar as informações na tabela
+      const npsPath = resolve(__dirname, '..', 'views', 'emails', 'npsMail.hbs');
       const surveyUser = surveyUserRepository.create({
         user_id: user.id,
         survey_id
@@ -33,9 +35,16 @@ class SendMailController {
 
       await surveyUserRepository.save(surveyUser);
 
-      // Enviar o email para o usuário
+      const variables = {
+        name: user.name,
+        title: survey.title,
+        description: survey.description,
+        user_id: user.id,
+        link: process.env.URL_MAIL
+      }
 
-      await SendMailService.execute(email, survey.title, survey.description);
+      // Enviar o email para o usuário
+      await SendMailService.execute(email, survey.title, variables, npsPath);
 
       return response.json(surveyUser);
     }
