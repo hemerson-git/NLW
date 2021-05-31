@@ -12,7 +12,7 @@ import CustomButton from "../components/CustomButton";
 import colors from "../styles/colors";
 import fonts from "../styles/fonts";
 import { format, isBefore } from "date-fns";
-import { PlantProps, savePlant } from "../libs/storage";
+import { loadPlant, PlantProps, savePlant } from "../libs/storage";
 
 interface PlantParams {
   plant: PlantProps;
