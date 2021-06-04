@@ -12,7 +12,7 @@ function MyApp({ Component, pageProps }) {
         <Component {...pageProps} />
       </main>
 
-      <Player/>
+      <Player />
     </div>
   );
 }
