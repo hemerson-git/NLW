@@ -68,19 +68,18 @@
               position: relative;
 
               &::before {
-                content: '';
+                content: "";
                 position: absolute;
                 width: 4px;
                 height: 4px;
                 border-radius: 50%;
-                background-color: #DDD;
+                background-color: #ddd;
                 left: 0;
                 top: 50%;
                 transform: translate(-50%, -50%);
               }
             }
           }
-
         }
       }
       button {
@@ -114,7 +113,8 @@
     table {
       width: 100%;
 
-      th, td {
+      th,
+      td {
         padding: 0.75rem 1rem;
         border-bottom: 1px solid var(--gray-100);
       }
@@ -122,7 +122,7 @@
       th {
         color: var(--gray-200);
         text-transform: uppercase;
-        font: 500 .75rem Lexend, sans-serif;
+        font: 500 0.75rem Lexend, sans-serif;
         text-align: left;
       }
 
@@ -141,7 +141,7 @@
           font-weight: 600;
           text-decoration: none;
           line-height: 1.4rem;
-  
+
           &:hover {
             text-decoration: underline;
           }
@@ -156,7 +156,7 @@
         border-radius: 0.5rem;
         font-size: 0;
 
-        transition: filter .2s;
+        transition: filter 0.2s;
 
         img {
           width: 1.25rem;
@@ -164,7 +164,7 @@
         }
 
         &:hover {
-          filter: brightness(.95);
+          filter: brightness(0.95);
         }
       }
     }
