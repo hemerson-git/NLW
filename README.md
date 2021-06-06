@@ -1,8 +1,3 @@
-<style>
-  img {
-    max-width: 50%;
-  }
-</style>
 
 # NLW - Next Level Week
 
