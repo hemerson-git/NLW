@@ -6,6 +6,7 @@ import createConnection from "../database";
 describe("Surveys", () => {
   beforeAll(async () => {
     const connection = await createConnection();
+
     await connection.runMigrations();
   });
 
