@@ -6,15 +6,15 @@ import illustrationImg from "../assets/images/illustration.svg";
 import logoImg from "../assets/images/logo.svg";
 import googleLogoImg from "../assets/images/google-icon.svg";
 
+import { useAuth } from "../contexts/AuthContext";
 import CustomButton from "../components/Button";
-import { auth, firebase } from "../services/firebase";
 
 function Home() {
   const history = useHistory();
+  const { signInWithGoogle, user } = useAuth();
 
   async function handleCreateRoom() {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    const result = await auth.signInWithPopup(provider);
+    const result = await signInWithGoogle();
 
     if (result) {
       history.push("/rooms/new");
@@ -35,10 +35,14 @@ function Home() {
       <main>
         <div className="main-content">
           <img src={logoImg} alt="letmeask" />
-          <button className="create-room" onClick={handleCreateRoom}>
-            <img src={googleLogoImg} alt="Logo do Google" />
-            Crie sua sala com o Google
-          </button>
+          {!user ? (
+            <button className="create-room" onClick={handleCreateRoom}>
+              <img src={googleLogoImg} alt="Logo do Google" />
+              Crie sua sala com o Google
+            </button>
+          ) : (
+            <p>{user.name}</p>
+          )}
 
           <div className="separator">Ou entre em uma sala</div>
 

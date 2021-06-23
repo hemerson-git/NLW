@@ -1,13 +1,24 @@
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import CustomButton from "../components/Button";
+import { useAuth } from "../contexts/AuthContext";
 
 import "../styles/auth.scss";
 
 import illustrationImg from "../assets/images/illustration.svg";
 import logoImg from "../assets/images/logo.svg";
+import { useEffect } from "react";
 
 function NewRoom() {
+  const { user } = useAuth();
+  const history = useHistory();
+
+  useEffect(() => {
+    if (!user) {
+      history.push("/");
+    }
+  }, [user, history]);
+
   return (
     <div id="page-auth">
       <aside>
