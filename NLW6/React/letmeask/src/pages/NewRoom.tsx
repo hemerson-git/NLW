@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 
 import CustomButton from "../components/Button";

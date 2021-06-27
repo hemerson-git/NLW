@@ -1,5 +1,5 @@
 .room-code {
-  height: 40px;
+  height: 2.5rem;
   border-radius: .5rem;
   overflow: hidden;
 
@@ -11,7 +11,8 @@
 
   div {
     background-color: var(--purple);
-    padding: 0 12px;
+    padding: 0 .75rem;
+    height: 100%;
 
     display: flex;
     justify-content: center;
@@ -28,3 +29,5 @@
     font-weight: 500;
   }
 }
+
+// Algoritmo de reconciliação - pesquisar
