@@ -1,0 +1,33 @@
+.room-code {
+  height: 2.5rem;
+  border-radius: .5rem;
+  overflow: hidden;
+
+  background-color: var(--white);
+  border: 1px solid var(--purple);
+  cursor: pointer;
+
+  display: flex;
+
+  div {
+    background-color: var(--purple);
+    padding: 0 .75rem;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  span {
+    display: block;
+    align-self: center;
+    flex: 1;
+    padding: 0 1rem 0 .7rem;
+    width: 230px;
+    font-size: .875rem;
+    font-weight: 500;
+  }
+}
+
+// Algoritmo de reconciliação - pesquisar
