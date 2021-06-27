@@ -8,6 +8,20 @@
     margin-top: 0.5rem;
   }
 
+  &.highlighted {
+    background-color: #F4F0FF;
+    border: 1px solid var(--purple);
+
+
+    footer .user-info span {
+      color: var(--dark-gray);
+    }
+  }
+
+  &.answered {
+    background-color: var(--gray);
+  }
+
   p {
     color: var(--dark-gray);
   }

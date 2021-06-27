@@ -40,7 +40,7 @@ function Room() {
         name: user.name,
         avatar: user.avatar,
       },
-      isHilighted: false,
+      isHighlighted: false,
       isAnswered: false,
     };
 
@@ -111,6 +111,8 @@ function Room() {
               key={question.id}
               content={question.content}
               author={question.author}
+              isAnswered={question.isAnswered}
+              isHighlighted={question.isHighlighted}
             >
               <button
                 className={`like-button ${question.likeId ? "liked" : ""}`}

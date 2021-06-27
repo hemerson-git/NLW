@@ -78,6 +78,11 @@
           }
         }
 
+        >div {
+          display: flex;
+          gap: 1rem;
+        }
+
         >span {
           font-size: .875rem;
           color: var(--medium-gray);
