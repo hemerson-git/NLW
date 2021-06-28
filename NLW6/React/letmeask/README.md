@@ -18,6 +18,8 @@ This project was developed during the 6st NLW (Next Level Week) workshop, given 
 
 ## 🎨 Layout Preview
 
+You can also preview it on: [Netlify-Letmeask](https://letmeask-nlw6.netlify.app)
+
 <img src='/NLW6/React/letmeask/.github/preview-nlw-6-react.gif?raw=true'/>
 
 ## 👨‍💻 Running
