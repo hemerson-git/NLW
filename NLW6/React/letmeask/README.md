@@ -1,5 +1,5 @@
 <p align='center'>
-  <img src='/NLW6/.github/logo.svg?raw=true'/>
+  <img src='/NLW6/React/letmeask/.github/logo.svg?raw=true'/>
 </p>
 
 ## 🎉 About
@@ -18,7 +18,7 @@ This project was developed during the 6st NLW (Next Level Week) workshop, given 
 
 ## 🎨 Layout Preview
 
-<img src='/NLW6/.github/preview-nlw-6-react.gif?raw=true'/>
+<img src='/NLW6/React/letmeask/.github/preview-nlw-6-react.gif?raw=true'/>
 
 ## 👨‍💻 Running
 
