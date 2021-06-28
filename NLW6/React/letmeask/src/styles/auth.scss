@@ -3,6 +3,25 @@
   align-items: stretch;
   height: 100vh;
 
+  @media (max-width: 727px) {
+    flex-wrap: wrap;
+    flex-direction: column;
+
+    aside {
+      overflow: hidden;
+      padding: 0 1rem !important;
+      flex: 3 !important;
+
+      img {
+        display: none;
+      }
+    }
+
+    main {
+      flex: 8;
+    }
+  }
+
   aside {
     display: flex;
     justify-content: center;
