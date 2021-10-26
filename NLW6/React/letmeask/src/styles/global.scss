@@ -1,0 +1,29 @@
+:root {
+  --light-gray: #f8f8f8;
+  --gray: #a8a8b3;
+  --medium-gray: #737380;
+  --dark-gray: #29292e;
+  --purple: #835afd;
+  --red: #ea4335;
+  --pink: #e559f9;
+
+  --white: #FFF;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--light-gray);
+  color: var(--dark-gray);
+}
+
+body,
+input,
+button,
+textarea {
+  font: 400 16px 'Roboto', sans-serif;
+}
