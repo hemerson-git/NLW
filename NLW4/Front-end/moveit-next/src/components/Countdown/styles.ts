@@ -5,7 +5,7 @@ export const CountdownContainer = styled.div`
   align-items: center;
   font-family: Rajdhani;
   font-weight: 600;
-  color: var(--title);
+  color: ${({ theme }) => theme.colors.timerText};
   min-width: 310px;
 
   > div {
@@ -14,7 +14,7 @@ export const CountdownContainer = styled.div`
     align-items: center;
     justify-content: space-evenly;
 
-    background: var(--white);
+    background: ${({ theme }) => theme.colors.timerBackground};
     box-shadow: 0 0 60px rgba(0, 0, 0, 0.05);
     border-radius: 5px;
     font-size: 8rem;

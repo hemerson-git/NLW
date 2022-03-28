@@ -3,11 +3,11 @@ import ThemeContext from "../../contexts/ThemeContext";
 import styles from "../../styles/components/ThemeButton.module.css";
 
 function ThemeButton() {
-  const { isDarkThemeActive, changeDarkModStatus } = useContext(ThemeContext);
+  const { isDarkThemeActive, changeDarkModeStatus } = useContext(ThemeContext);
 
   return (
     <div className={styles.themeButtonContainer}>
-      <button onClick={() => changeDarkModStatus(!isDarkThemeActive)}>
+      <button onClick={() => changeDarkModeStatus(!isDarkThemeActive)}>
         {isDarkThemeActive ? (
           <img src="icons/on.png" alt="off" />
         ) : (

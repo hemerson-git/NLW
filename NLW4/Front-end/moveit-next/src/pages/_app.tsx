@@ -1,12 +1,12 @@
-import { ThemeProvider } from "../contexts/ThemeContext";
+import { ToggleThemeProvider } from "../contexts/ThemeContext";
 import { GlobalStyle } from "../styles/styles";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ThemeProvider>
+    <ToggleThemeProvider>
       <GlobalStyle />
       <Component {...pageProps} />
-    </ThemeProvider>
+    </ToggleThemeProvider>
   );
 }
 
