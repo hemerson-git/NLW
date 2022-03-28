@@ -1,51 +1,29 @@
-.countdownContainer {
-  display: flex;
-  align-items: center;
-  font-family: Rajdhani;
-  font-weight: 600;
-  color: var(--title);
-  min-width: 310px;
-}
-
-.countdownContainer > div {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-
-  background: var(--white);
-  box-shadow: 0 0 60px rgba(0, 0, 0, .05);
-  border-radius: 5px;
-  font-size: 8.5rem;
-  text-align: center;
-}
-
 .countdownContainer.dark {
   color: var(--foreground);
 }
 
-.countdownContainer.dark > div {
+.countdownContainer.dark>div {
   background-color: var(--background-semidark);
 }
 
-.countdownContainer.dark > div span:first-child,
-.countdownContainer.dark > div span:last-child {
+.countdownContainer.dark>div span:first-child,
+.countdownContainer.dark>div span:last-child {
   border-color: var(--background-dark) !important;
 }
 
-.countdownContainer > div span {
+.countdownContainer>div span {
   flex: 1;
 }
 
-.countdownContainer > div span:first-child {
+.countdownContainer>div span:first-child {
   border-right: 1px solid #f0f1f3;
 }
 
-.countdownContainer > div span:last-child {
+.countdownContainer>div span:last-child {
   border-left: 1px solid #f0f1f3;
 }
 
-.countdownContainer > span {
+.countdownContainer>span {
   font-size: 6.25rem;
   margin: 0 0.5rem;
 }

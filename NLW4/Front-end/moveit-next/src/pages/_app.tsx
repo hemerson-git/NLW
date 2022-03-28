@@ -1,13 +1,13 @@
-import { ThemeProvider } from '../contexts/ThemeContext';
+import { ThemeProvider } from "../contexts/ThemeContext";
+import { GlobalStyle } from "../styles/styles";
 
-import '../styles/global.css';
-
-function MyApp({ Component, pageProps }) {  
+function MyApp({ Component, pageProps }) {
   return (
-      <ThemeProvider>
-        <Component {...pageProps} />
-      </ThemeProvider>
-  )
+    <ThemeProvider>
+      <GlobalStyle />
+      <Component {...pageProps} />
+    </ThemeProvider>
+  );
 }
 
-export default MyApp
+export default MyApp;
