@@ -17,6 +17,13 @@
   flex-direction: column;
 }
 
+@media(max-width: 575.98px) {
+  .container {
+    padding: 0 2rem;
+    padding-bottom: 2rem;
+  }
+}
+
 .container section {
   flex: 1;
   display: grid;

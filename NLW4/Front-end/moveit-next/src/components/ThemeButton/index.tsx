@@ -1,20 +1,24 @@
 import { useContext } from "react";
 import ThemeContext from "../../contexts/ThemeContext";
-import styles from "../../styles/components/ThemeButton.module.css";
+
+// styled
+import { ButtonContainer, ButtonToggleTheme } from "./styles";
 
 function ThemeButton() {
   const { isDarkThemeActive, changeDarkModeStatus } = useContext(ThemeContext);
 
   return (
-    <div className={styles.themeButtonContainer}>
-      <button onClick={() => changeDarkModeStatus(!isDarkThemeActive)}>
+    <ButtonContainer>
+      <ButtonToggleTheme
+        onClick={() => changeDarkModeStatus(!isDarkThemeActive)}
+      >
         {isDarkThemeActive ? (
-          <img src="icons/on.png" alt="off" />
+          <img src="icons/on.png" alt="imagem de uma lâmpada ligada" />
         ) : (
-          <img src="icons/off.png" alt="off" />
+          <img src="icons/off.png" alt="Imagem de uma lâmpada apagada" />
         )}
-      </button>
-    </div>
+      </ButtonToggleTheme>
+    </ButtonContainer>
   );
 }
 
