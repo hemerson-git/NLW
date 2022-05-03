@@ -20,6 +20,10 @@ import { ChallengeProvider } from "../contexts/challengesContext";
 
 // Styleds
 import { Header } from "../styles/styles";
+import { Container } from "../styles/pages/Home";
+import { ThemeProvider } from "styled-components";
+
+import { theme } from "../themes/theme";
 
 interface HomeProps {
   level: number;
@@ -29,41 +33,44 @@ interface HomeProps {
 
 export default function Home(props: HomeProps) {
   const { isDarkThemeActive } = useContext(ThemeContext);
-  const dark = isDarkThemeActive ? styles.dark : "";
+  const { dark, light } = theme;
+  const selectedTheme = isDarkThemeActive ? dark : light;
 
   return (
-    <div className={`${styles.pBody} ${dark}`}>
-      <ChallengeProvider
-        level={props.level}
-        currentExperience={props.currentExperience}
-        challengesCompleted={props.challengesCompleted}
-      >
-        <div className={`${styles.container}`}>
-          <Head>
-            <title>Ínicio | Moveit</title>
-          </Head>
+    <ThemeProvider theme={selectedTheme}>
+      <Container>
+        <ChallengeProvider
+          level={props.level}
+          currentExperience={props.currentExperience}
+          challengesCompleted={props.challengesCompleted}
+        >
+          <div className={`${styles.container}`}>
+            <Head>
+              <title>Ínicio | Moveit</title>
+            </Head>
 
-          <Header>
-            <ExperienceBar />
-            <ThemeButton />
-          </Header>
+            <Header>
+              <ExperienceBar />
+              <ThemeButton />
+            </Header>
 
-          <CountdownProvider>
-            <section>
-              <div>
-                <Profile />
-                <CompletedChallenges />
-                <Countdown />
-              </div>
+            <CountdownProvider>
+              <section>
+                <div>
+                  <Profile />
+                  <CompletedChallenges />
+                  <Countdown />
+                </div>
 
-              <div>
-                <ChallangeBox />
-              </div>
-            </section>
-          </CountdownProvider>
-        </div>
-      </ChallengeProvider>
-    </div>
+                <div>
+                  <ChallangeBox />
+                </div>
+              </section>
+            </CountdownProvider>
+          </div>
+        </ChallengeProvider>
+      </Container>
+    </ThemeProvider>
   );
 }
 

@@ -1,17 +1,14 @@
-import { Profiler } from "inspector";
 import { useContext } from "react";
 import ChallengesContext from "../../contexts/challengesContext";
-import ThemeContext from "../../contexts/ThemeContext";
 
-import styles from "../../styles/components/Profile.module.css";
+// Styleds
+import { ProfileContainer } from "./styles";
 
 function Profile() {
   const { level } = useContext(ChallengesContext);
-  const { isDarkThemeActive } = useContext(ThemeContext);
-  const dark = isDarkThemeActive ? styles.dark : "";
 
   return (
-    <div className={`${styles.profileContainer} ${dark}`}>
+    <ProfileContainer>
       <img src="https://github.com/hemerson-git.png" alt="Hemerson Oliveira" />
 
       <div>
@@ -21,7 +18,7 @@ function Profile() {
           Level {level}
         </p>
       </div>
-    </div>
+    </ProfileContainer>
   );
 }
 

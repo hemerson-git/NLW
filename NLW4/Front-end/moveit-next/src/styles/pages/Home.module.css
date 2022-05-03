@@ -8,13 +8,20 @@
 }
 
 .container {
-  height: 100vh;
+  min-height: 100vh;
   max-width: 992px;
   margin: 0 auto;
   padding: 0 2.5rem;
 
   display: flex;
   flex-direction: column;
+}
+
+@media(max-width: 575.98px) {
+  .container {
+    padding: 0 2rem;
+    padding-bottom: 2rem;
+  }
 }
 
 .container section {
