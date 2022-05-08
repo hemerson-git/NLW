@@ -7,6 +7,7 @@ import BugImageURL from "../../assets/Bug.svg";
 import IDEAImageURL from "../../assets/Idea.svg";
 import ThoughtImageURL from "../../assets/Thought.svg";
 import { FeedbackContentStep } from "./steps/FeedbackContentStep";
+import { FeedbackSuccessStep } from "./steps/FeedbackSuccessStep";
 
 export const feedbackTypes = {
   BUG: {
@@ -38,6 +39,7 @@ export type FeedbackType = keyof typeof feedbackTypes;
 
 export function WidgetForm() {
   const [feedbackType, setFeedbackType] = useState<null | FeedbackType>(null);
+  const [feedbackSent, setFeedbackSent] = useState(false);
 
   function handleSelectFeedbackType(type: FeedbackType) {
     setFeedbackType(type);
@@ -45,6 +47,11 @@ export function WidgetForm() {
 
   function handleRestartFeedback() {
     setFeedbackType(null);
+    setFeedbackSent(false);
+  }
+
+  function handleSendFeedback() {
+    setFeedbackSent(true);
   }
 
   return (
@@ -63,13 +70,22 @@ export function WidgetForm() {
       md:w-auto
       "
     >
-      {!feedbackType ? (
-        <FeedbackTypeStep onFeedbackTypeChanged={handleSelectFeedbackType} />
+      {feedbackSent ? (
+        <FeedbackSuccessStep onFeedbackRestartRequest={handleRestartFeedback} />
       ) : (
-        <FeedbackContentStep
-          selectedFeedbackType={feedbackType}
-          onFeedbackTypeRestarted={handleRestartFeedback}
-        />
+        <>
+          {!feedbackType ? (
+            <FeedbackTypeStep
+              onFeedbackTypeChanged={handleSelectFeedbackType}
+            />
+          ) : (
+            <FeedbackContentStep
+              selectedFeedbackType={feedbackType}
+              onFeedbackTypeRestarted={handleRestartFeedback}
+              onFeedbackSent={handleSendFeedback}
+            />
+          )}
+        </>
       )}
 
       <footer>
