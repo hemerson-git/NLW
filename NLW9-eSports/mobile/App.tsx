@@ -1,6 +1,9 @@
 import { NativeBaseProvider, VStack, Text, StatusBar } from "native-base";
+import { useState } from "react";
 
 export default function App() {
+  const [test, setTest] = useState("");
+
   return (
     <NativeBaseProvider>
       <VStack
