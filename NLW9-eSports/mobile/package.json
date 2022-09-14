@@ -9,7 +9,10 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@expo-google-fonts/inter": "^0.2.2",
     "expo": "~46.0.9",
+    "expo-font": "~10.2.0",
+    "expo-linear-gradient": "~11.4.0",
     "expo-splash-screen": "~0.16.2",
     "expo-status-bar": "~1.4.0",
     "native-base": "^3.4.15",
