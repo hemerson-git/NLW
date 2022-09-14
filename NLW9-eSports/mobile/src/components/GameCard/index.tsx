@@ -1,6 +1,6 @@
 import { Heading, VStack } from "native-base";
 
-export function Card() {
+export function GameCard() {
   return (
     <VStack>
       <VStack>

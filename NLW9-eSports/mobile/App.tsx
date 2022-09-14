@@ -21,7 +21,7 @@ export default function App() {
     Inter_900Black,
   });
 
-  if (fontsLoaded) {
+  if (!fontsLoaded) {
     return (
       <NativeBaseProvider>
         <Background>
@@ -36,8 +36,9 @@ export default function App() {
       <StatusBar
         barStyle="light-content"
         translucent
-        backgroundColor="#18181B"
+        backgroundColor="transparent"
       />
+
       <Home />
     </NativeBaseProvider>
   );
