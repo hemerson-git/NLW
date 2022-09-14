@@ -1,26 +1,45 @@
-import { NativeBaseProvider, VStack, Text, StatusBar } from "native-base";
 import { useState } from "react";
+import { NativeBaseProvider, StatusBar } from "native-base";
+import {
+  useFonts,
+  Inter_400Regular,
+  Inter_600SemiBold,
+  Inter_700Bold,
+  Inter_900Black,
+} from "@expo-google-fonts/inter";
+
+import { THEME } from "./src/theme/index";
+import { Home } from "./src/pages/Home";
+import { Loading } from "./src/components/Loading";
+import { Background } from "./src/components/Background";
 
 export default function App() {
-  const [test, setTest] = useState("");
+  const [fontsLoaded] = useFonts({
+    Inter_400Regular,
+    Inter_600SemiBold,
+    Inter_700Bold,
+    Inter_900Black,
+  });
+
+  if (!fontsLoaded) {
+    return (
+      <NativeBaseProvider>
+        <Background>
+          <Loading />
+        </Background>
+      </NativeBaseProvider>
+    );
+  }
 
   return (
-    <NativeBaseProvider>
-      <VStack
-        bg="purple.700"
-        minHeight="full"
-        alignItems="center"
-        justifyContent="center"
-      >
-        <StatusBar
-          barStyle="light-content"
-          translucent
-          backgroundColor="#7e22ce"
-        />
-        <Text color="white" fontSize="lg">
-          Hello, World!
-        </Text>
-      </VStack>
+    <NativeBaseProvider theme={THEME}>
+      <StatusBar
+        barStyle="light-content"
+        translucent
+        backgroundColor="transparent"
+      />
+
+      <Home />
     </NativeBaseProvider>
   );
 }
