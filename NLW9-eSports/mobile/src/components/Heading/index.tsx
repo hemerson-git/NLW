@@ -13,7 +13,7 @@ export function Heading({ title, subtitle, ...props }: HeadingProps) {
         {title}
       </Title>
 
-      <Text color="gray.300" fontSize="xl" fontFamily="body">
+      <Text color="gray.400" fontSize="xl" fontFamily="body">
         {subtitle}
       </Text>
     </VStack>
