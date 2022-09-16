@@ -9,9 +9,9 @@ import {
 } from "@expo-google-fonts/inter";
 
 import { THEME } from "./src/theme/index";
-import { Home } from "./src/pages/Home";
 import { Loading } from "./src/components/Loading";
 import { Background } from "./src/components/Background";
+import { Routes } from "./src/routes";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -39,7 +39,7 @@ export default function App() {
         backgroundColor="transparent"
       />
 
-      <Home />
+      <Routes />
     </NativeBaseProvider>
   );
 }

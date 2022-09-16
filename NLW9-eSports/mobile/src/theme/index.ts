@@ -51,4 +51,12 @@ export const THEME = extendTheme({
     heading: "Inter",
     body: "Inter",
   },
+
+  space: {
+    18: 72,
+  },
+
+  sizes: {
+    "18": 72,
+  },
 });

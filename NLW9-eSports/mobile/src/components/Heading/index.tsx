@@ -8,7 +8,7 @@ interface HeadingProps extends IVStackProps {
 
 export function Heading({ title, subtitle, ...props }: HeadingProps) {
   return (
-    <VStack {...props}>
+    <VStack w="full" padding={8} {...props}>
       <Title fontSize="3xl" fontFamily="heading" color="white">
         {title}
       </Title>
