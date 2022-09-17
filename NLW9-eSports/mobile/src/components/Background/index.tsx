@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-import { Heading, Text, VStack } from "native-base";
 import { ImageBackground } from "react-native";
 
 import bgImage from "../../assets/background-galaxy.png";
@@ -16,7 +15,6 @@ export function Background({ children }: BackgroundProps) {
       defaultSource={bgImage}
       style={bgImageStyles.container}
     >
-      <Text>Hello</Text>
       {children}
     </ImageBackground>
   );

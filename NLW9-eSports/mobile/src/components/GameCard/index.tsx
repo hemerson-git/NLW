@@ -1,21 +1,16 @@
 import { LinearGradient } from "expo-linear-gradient";
-import {
-  Heading,
-  IPressableProps,
-  Pressable,
-  Text,
-  View,
-  VStack,
-} from "native-base";
-import { ImageBackground, ImageSourcePropType } from "react-native";
+import { IPressableProps, Pressable, Text } from "native-base";
+import { ImageBackground } from "react-native";
 
 import { styles } from "./styles";
 
 export interface GameCardProps {
   id: string;
-  name: string;
-  ads: string;
-  cover: ImageSourcePropType;
+  title: string;
+  bannerUrl: string;
+  _count: {
+    ads: number;
+  };
 }
 
 interface Props extends IPressableProps {
@@ -25,17 +20,17 @@ interface Props extends IPressableProps {
 export function GameCard({ data, ...rest }: Props) {
   return (
     <Pressable mr={"4"} _pressed={{ opacity: 0.8 }} {...rest}>
-      <ImageBackground source={data.cover} style={styles.cover}>
+      <ImageBackground source={{ uri: data.bannerUrl }} style={styles.cover}>
         <LinearGradient
           colors={["rgba(0,0,0,0)", "rgba(0,0,0,0.9)"]}
           style={styles.footer}
         >
           <Text color="white" fontSize="xl" fontFamily="body" fontWeight="bold">
-            {data.name}
+            {data.title}
           </Text>
 
           <Text color="gray.300" fontSize="md" fontFamily="body">
-            {data.ads} anúncios
+            {data._count.ads} anúncios
           </Text>
         </LinearGradient>
       </ImageBackground>
