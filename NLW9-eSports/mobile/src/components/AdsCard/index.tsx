@@ -1,6 +1,7 @@
 import { Text, VStack } from "native-base";
 import { Pressable } from "native-base";
 import { Duoinfo } from "../DuoInfo";
+import { GameController } from "phosphor-react-native";
 
 export interface AdsCardProps {
   id: string;
@@ -21,7 +22,14 @@ export function AdsCard({ data }: Props) {
   const [hourStart] = data.hourStart.split(":");
 
   return (
-    <VStack w={200} bg="gray.700" padding={5} borderRadius="md" mr={4}>
+    <VStack
+      w={200}
+      bg="gray.700"
+      padding={5}
+      borderRadius="md"
+      mr={4}
+      alignItems="center"
+    >
       <Duoinfo label="Nome" value={data.name} />
       <Duoinfo label="Tempo de Jogo" value={`${data.yearsPlaying} anos`} />
       <Duoinfo
@@ -34,8 +42,20 @@ export function AdsCard({ data }: Props) {
         colorValue={data.useVoiceChannel ? "green.500" : "danger.500"}
       />
 
-      <Pressable bg="primary.500" _pressed={{ opacity: 0.8 }}>
-        <Text color="white">Conectar</Text>
+      <Pressable
+        bg="primary.500"
+        _pressed={{ opacity: 0.8 }}
+        alignItems="center"
+        justifyContent="center"
+        flexDirection="row"
+        rounded="md"
+        w="full"
+        h={"9"}
+      >
+        <GameController color="white" size={20} />
+        <Text color="white" ml="2">
+          Conectar
+        </Text>
       </Pressable>
     </VStack>
   );

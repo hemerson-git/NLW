@@ -7,6 +7,7 @@ import {
   Image,
   Box,
   FlatList,
+  Text,
 } from "native-base";
 import { useRoute, useNavigation } from "@react-navigation/native";
 import { Entypo } from "@expo/vector-icons";
@@ -20,6 +21,7 @@ import { AdsCard } from "../../components/AdsCard";
 
 // SERVICES
 import { API } from "../../services/api";
+import { styles } from "./styles";
 
 interface RouteProps {
   id: string;
@@ -55,7 +57,7 @@ export function Game() {
           alignItems="center"
           paddingX={8}
           mb={8}
-          mt={7}
+          mt={4}
           justifyContent="space-between"
         >
           <Pressable
@@ -94,7 +96,26 @@ export function Game() {
             keyExtractor={(item) => item.id}
             horizontal
             pl="10"
-            contentContainerStyle={{ paddingRight: 72 }}
+            contentContainerStyle={[
+              duoAds.length ? styles.listContainer : styles.emptyListContainer,
+            ]}
+            ListEmptyComponent={() => (
+              <VStack
+                flex={1}
+                alignContent="center"
+                justifyContent="center"
+                h="85%"
+              >
+                <Text
+                  color="gray.300"
+                  fontSize="sm"
+                  fontFamily="body"
+                  textAlign="center"
+                >
+                  Ainda não há anúncios cadastrados
+                </Text>
+              </VStack>
+            )}
           />
         </HStack>
       </VStack>
