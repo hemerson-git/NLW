@@ -20,6 +20,7 @@ export function CreateAdModal() {
   const [games, setGames] = useState<APIGamesProps[]>([] as APIGamesProps[]);
   const [weekDays, setWeekDays] = useState<string[]>([]);
   const [selectedGame, setSelectedGame] = useState<string>();
+  const [useVoiceChannel, setUseVoiceChannel] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -28,13 +29,29 @@ export function CreateAdModal() {
     })();
   }, []);
 
-  const handleCreateAd = useCallback((event: FormEvent) => {
+  const handleCreateAd = useCallback(async (event: FormEvent) => {
     event.preventDefault();
 
     const formData = new FormData(event.target as HTMLFormElement);
     const data = Object.fromEntries(formData);
 
-    console.log(data);
+    try {
+      await api.post(`/games/${data.selectedGame}/ads`, {
+        name: data.name,
+        yearsPlaying: Number(data.yearsPlaying),
+        discord: data.discord,
+        weekDays: weekDays.map(Number),
+        hourStart: data.hourStart,
+        hourEnd: data.hourEnd,
+        useVoiceChannel,
+      });
+
+      console.log(data);
+
+      alert("Anúncio Criado com sucesso!");
+    } catch (err) {
+      alert("Erro ao Criar anúncio!");
+    }
   }, []);
 
   return (
@@ -195,7 +212,16 @@ export function CreateAdModal() {
           </div>
 
           <label className="mt-2 flex items-center gap-2 text-sm">
-            <CheckBox.Root className="w-6 h-6 rounded bg-zinc-900">
+            <CheckBox.Root
+              className="w-6 h-6 rounded bg-zinc-900"
+              name="useVoiceChannel"
+              checked={useVoiceChannel}
+              onCheckedChange={(checked) =>
+                checked === true
+                  ? setUseVoiceChannel(true)
+                  : setUseVoiceChannel(false)
+              }
+            >
               <CheckBox.Indicator className="flex items-center justify-center">
                 <Check className="w-4 h-4 text-emerald-400" />
               </CheckBox.Indicator>
