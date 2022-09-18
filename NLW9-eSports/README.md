@@ -3,7 +3,7 @@
 </p>
 
 <h1 align="center">
-  Leve felicidade para o mundo
+  Let's Play Together 
 </h1>
 
 ## 🎉 About
