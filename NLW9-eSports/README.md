@@ -9,7 +9,7 @@
 ## 🎉 About
 
 **eSports** 
-eSport is a platform to help people find their duos to playing games together.
+eSport is a platform to help people find their duos to play games together.
 It was developed during the 9th NLW (Next Level Week) workshop, given by [Rocketseat](https://rocketseat.com.br/), using the technologies: reactJS, React-Native and NodeJS.
 
 <hr />
