@@ -1,4 +1,4 @@
-import { IPressableProps, Text, VStack } from "native-base";
+import { IPressableProps, Skeleton, Text, VStack } from "native-base";
 import { Pressable } from "native-base";
 import { Duoinfo } from "../DuoInfo";
 import { GameController } from "phosphor-react-native";
@@ -16,9 +16,10 @@ export interface AdsCardProps {
 type Props = IPressableProps & {
   data: AdsCardProps;
   onConnect: () => void;
+  isLoading: boolean;
 };
 
-export function AdsCard({ data, onConnect, ...rest }: Props) {
+export function AdsCard({ data, onConnect, isLoading, ...rest }: Props) {
   const [hourEnd] = data.hourEnd.split(":");
   const [hourStart] = data.hourStart.split(":");
 
@@ -60,6 +61,38 @@ export function AdsCard({ data, onConnect, ...rest }: Props) {
           Conectar
         </Text>
       </Pressable>
+    </VStack>
+  );
+}
+
+export function AdsCardSkeleton() {
+  return (
+    <VStack w={200} bg="gray.700" padding={5} borderRadius="md" mr={4}>
+      <VStack mb={6}>
+        <Skeleton h={3} w={20} startColor="gray.500" mb="4" rounded="md" />
+        <Skeleton h={3} w="full" startColor="white" rounded="md" />
+      </VStack>
+
+      <VStack mb={6}>
+        <Skeleton h={3} w={120} startColor="gray.500" mb="4" rounded="md" />
+        <Skeleton h={3} w={20} startColor="white" rounded="md" />
+      </VStack>
+
+      <VStack mb={6}>
+        <Skeleton h={3} w={140} startColor="gray.500" mb="4" rounded="md" />
+        <Skeleton h={3} w={32} startColor="white" rounded="md" />
+      </VStack>
+
+      <VStack mb={6}>
+        <Skeleton h={3} w={140} startColor="gray.500" mb="4" rounded="md" />
+        <Skeleton h={3} w={32} startColor="white" rounded="md" />
+      </VStack>
+
+      <VStack>
+        <Skeleton w="full" h={"9"} rounded="md" startColor="primary.500">
+          <Skeleton h="3" w="80%" startColor="white" />
+        </Skeleton>
+      </VStack>
     </VStack>
   );
 }
