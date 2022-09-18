@@ -1,27 +1,28 @@
 <p align='center'>
-  <img src='https://github.com/hemerson-git/NLW/blob/nlw-9/NLW9-eSports/.github/logo.svg'/>
+  <img src='/NLW9/.github/logo.svg?raw=true'/>
 </p>
 
 <h1 align="center">
-  Let's Play Together 
+  Leve felicidade para o mundo
 </h1>
 
 ## 🎉 About
 
-**eSports** 
+**eSports**
 eSport is a platform to help people find their duos to play games together.
 It was developed during the 9th NLW (Next Level Week) workshop, given by [Rocketseat](https://rocketseat.com.br/), using the technologies: reactJS, React-Native and NodeJS.
 
 <hr />
 
-## 🔌 Tecnologies
+## 🔌 Technologies
 
 <img src="https://i.ibb.co/PZ2XZgr/ts.png" width="20"/> <b>TypeScript</b>,
 <img src="https://i.ibb.co/4RHMmLQ/react.png" width="20"/> <b>React Js & React Native</b>,
 <img src="https://i.ibb.co/vVxmyN2/node.png" width="20"/> <b>Node Js</b>
 
 ## 🎨 Layout Preview
-<img height="250" src='https://github.com/hemerson-git/NLW/blob/nlw-9/NLW9-eSports/.github/preview_mobile.gif?raw=true'/>
+
+<img src='/NLW9/.github/preview_mobile.gif?raw=true'/>
 
 <!-- ## 👨‍💻 Running
 
