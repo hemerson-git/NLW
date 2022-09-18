@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
+import "keen-slider/keen-slider.min.css";
 
 import logoImg from "./assets/logo.svg";
 
@@ -7,6 +8,7 @@ import logoImg from "./assets/logo.svg";
 import { CreateAdBanner } from "./components/CreateAdBanner";
 import { GameBanner } from "./components/GameBanner";
 import { CreateAdModal } from "./components/CreateAdModal";
+import { Slider } from "./components/Slider";
 
 // SERVICES
 import { api } from "./services/api";
@@ -22,16 +24,22 @@ interface APIGamesProps {
 
 function App() {
   const [games, setGames] = useState<APIGamesProps[]>([] as APIGamesProps[]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
       const { data } = await api.get("/games");
       setGames(data);
+      setIsLoading(false);
     })();
   }, []);
 
+  if (isLoading) {
+    return <h1>Loading</h1>;
+  }
+
   return (
-    <div className="max-w-[1344px] mx-auto flex items-center flex-col my-20">
+    <div className="xl:max-w-[990px] 2xl:max-w-[1334px] mx-auto flex items-center flex-col my-20">
       <img src={logoImg} alt="" />
 
       <h1 className="text-6xl text-white font-black mt-20">
@@ -42,15 +50,19 @@ function App() {
         está aqui
       </h1>
 
-      <section className="grid grid-cols-6 gap-6 mt-16">
-        {games.map((game) => (
-          <GameBanner
-            key={game.id}
-            bannerUrl={game.bannerUrl}
-            adsCount={game._count.ads}
-            title={game.title}
-          />
-        ))}
+      <section className="mt-16 max-w-full">
+        <Slider showArrows>
+          {games.map((game, index) => (
+            <div className={`keen-slider__slide number-slide${index}`}>
+              <GameBanner
+                key={game.id}
+                bannerUrl={game.bannerUrl}
+                adsCount={game._count.ads}
+                title={game.title}
+              />
+            </div>
+          ))}
+        </Slider>
       </section>
 
       <Dialog.Root>
