@@ -7,7 +7,11 @@ import logo from "../../assets/logo-nlw-esports.png";
 // COMPONENTS
 import { Background } from "../../components/Background";
 import { Heading } from "../../components/Heading";
-import { GameCard, GameCardProps } from "../../components/GameCard";
+import {
+  GameCard,
+  GameCardProps,
+  GameCardSkeleton,
+} from "../../components/GameCard";
 
 // SERVICES
 import { API } from "../../services/api";
@@ -23,6 +27,8 @@ interface APIGames {
 
 export function Home() {
   const [games, setGames] = useState<APIGames[]>([] as APIGames[]);
+  const [isLoading, setIsLoading] = useState(false);
+
   const navigation = useNavigation();
 
   function handleOpenGame({ id, bannerUrl, title }: GameCardProps) {
@@ -31,8 +37,10 @@ export function Home() {
 
   useEffect(() => {
     (async () => {
+      setIsLoading(true);
       const { data } = await API.get("/games");
       setGames(data);
+      setIsLoading(false);
     })();
   }, []);
 
@@ -55,26 +63,30 @@ export function Home() {
           pl={8}
           contentContainerStyle={{ paddingRight: 64 }}
           keyExtractor={(item) => item.id}
-          renderItem={({ item }) => (
-            <GameCard
-              data={{
-                _count: {
-                  ads: item._count.ads,
-                },
-                bannerUrl: item.bannerUrl,
-                title: item.title,
-                id: item.id,
-              }}
-              onPress={() =>
-                handleOpenGame({
+          renderItem={({ item }) => {
+            if (isLoading) return <GameCardSkeleton />;
+
+            return (
+              <GameCard
+                data={{
+                  _count: {
+                    ads: item._count.ads,
+                  },
                   bannerUrl: item.bannerUrl,
-                  id: item.id,
                   title: item.title,
-                  _count: item._count,
-                })
-              }
-            />
-          )}
+                  id: item.id,
+                }}
+                onPress={() =>
+                  handleOpenGame({
+                    bannerUrl: item.bannerUrl,
+                    id: item.id,
+                    title: item.title,
+                    _count: item._count,
+                  })
+                }
+              />
+            );
+          }}
         />
       </VStack>
     </Background>

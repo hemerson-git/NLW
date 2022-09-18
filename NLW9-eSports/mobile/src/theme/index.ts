@@ -24,7 +24,7 @@ export const THEME = extendTheme({
     },
 
     FOOTER: ["rgba(0,0,0,0)", "rgba(0,0,0,0.9)"],
-    OVERLAY: "rgba(0,0,0,0.6)",
+    overlay: "rgba(0,0,0,0.6)",
   },
 
   fontConfig: {

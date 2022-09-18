@@ -18,6 +18,7 @@ import logoImg from "../../assets/logo-nlw-esports.png";
 import { Background } from "../../components/Background";
 import { Heading } from "../../components/Heading";
 import { AdsCard } from "../../components/AdsCard";
+import { CustomModal } from "../../components/CustomModal";
 
 // SERVICES
 import { API } from "../../services/api";
@@ -36,9 +37,23 @@ export function Game() {
   const navigation = useNavigation();
 
   const [duoAds, setDuoAds] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [duoDiscord, setDuoDiscord] = useState("");
+  const [isLoadingDiscord, setIsLoadingDiscord] = useState(false);
 
   function handleGoBack() {
     navigation.goBack();
+  }
+
+  async function handleConnect(adsId: string) {
+    try {
+      setIsLoadingDiscord(true);
+      const { data } = await API.get(`/ads/${adsId}/discord`);
+      setIsLoadingDiscord(false);
+      setDuoDiscord(data.discord);
+    } catch (error) {
+      setDuoDiscord("Ocorreu algum erro, tente novamente");
+    }
   }
 
   useEffect(() => {
@@ -92,7 +107,15 @@ export function Game() {
         <HStack>
           <FlatList
             data={duoAds}
-            renderItem={({ item }) => <AdsCard data={item} />}
+            renderItem={({ item }) => (
+              <AdsCard
+                onConnect={() => {
+                  setShowModal(true);
+                  handleConnect(item.id);
+                }}
+                data={item}
+              />
+            )}
             keyExtractor={(item) => item.id}
             horizontal
             pl="10"
@@ -118,6 +141,14 @@ export function Game() {
             )}
           />
         </HStack>
+
+        <CustomModal
+          animationPreset="fade"
+          isOpen={showModal}
+          discord={duoDiscord}
+          closeModal={() => setShowModal(false)}
+          onClose={() => setShowModal(false)}
+        />
       </VStack>
     </Background>
   );
