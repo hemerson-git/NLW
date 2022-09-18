@@ -1,4 +1,4 @@
-import { Text, VStack } from "native-base";
+import { IPressableProps, Text, VStack } from "native-base";
 import { Pressable } from "native-base";
 import { Duoinfo } from "../DuoInfo";
 import { GameController } from "phosphor-react-native";
@@ -13,11 +13,12 @@ export interface AdsCardProps {
   yearsPlaying: number;
 }
 
-type Props = {
+type Props = IPressableProps & {
   data: AdsCardProps;
+  onConnect: () => void;
 };
 
-export function AdsCard({ data }: Props) {
+export function AdsCard({ data, onConnect, ...rest }: Props) {
   const [hourEnd] = data.hourEnd.split(":");
   const [hourStart] = data.hourStart.split(":");
 
@@ -43,6 +44,7 @@ export function AdsCard({ data }: Props) {
       />
 
       <Pressable
+        onPress={onConnect}
         bg="primary.500"
         _pressed={{ opacity: 0.8 }}
         alignItems="center"
@@ -51,6 +53,7 @@ export function AdsCard({ data }: Props) {
         rounded="md"
         w="full"
         h={"9"}
+        {...rest}
       >
         <GameController color="white" size={20} />
         <Text color="white" ml="2">
