@@ -17,7 +17,7 @@ import logoImg from "../../assets/logo-nlw-esports.png";
 // COMPONENTS
 import { Background } from "../../components/Background";
 import { Heading } from "../../components/Heading";
-import { AdsCard } from "../../components/AdsCard";
+import { AdsCard, AdsCardSkeleton } from "../../components/AdsCard";
 import { CustomModal } from "../../components/CustomModal";
 
 // SERVICES
@@ -40,6 +40,7 @@ export function Game() {
   const [showModal, setShowModal] = useState(false);
   const [duoDiscord, setDuoDiscord] = useState("");
   const [isLoadingDiscord, setIsLoadingDiscord] = useState(false);
+  const [isLoadingAds, setIsLoadingAds] = useState(true);
 
   function handleGoBack() {
     navigation.goBack();
@@ -58,10 +59,13 @@ export function Game() {
 
   useEffect(() => {
     (async () => {
-      const { data } = await API.get(`/games/${params.id}/ads`);
-      setDuoAds(data);
+      if (isLoadingAds) {
+        const { data } = await API.get(`/games/${params.id}/ads`);
+        setDuoAds(data);
+        setIsLoadingAds(false);
+      }
     })();
-  }, []);
+  }, [isLoadingAds]);
 
   return (
     <Background>
@@ -113,6 +117,7 @@ export function Game() {
                   setShowModal(true);
                   handleConnect(item.id);
                 }}
+                isLoading={isLoadingAds}
                 data={item}
               />
             )}
@@ -122,23 +127,31 @@ export function Game() {
             contentContainerStyle={[
               duoAds.length ? styles.listContainer : styles.emptyListContainer,
             ]}
-            ListEmptyComponent={() => (
-              <VStack
-                flex={1}
-                alignContent="center"
-                justifyContent="center"
-                h="85%"
-              >
-                <Text
-                  color="gray.300"
-                  fontSize="sm"
-                  fontFamily="body"
-                  textAlign="center"
+            ListEmptyComponent={() => {
+              return isLoadingAds ? (
+                <>
+                  <AdsCardSkeleton />
+                  <AdsCardSkeleton />
+                  <AdsCardSkeleton />
+                </>
+              ) : (
+                <VStack
+                  flex={1}
+                  alignContent="center"
+                  justifyContent="center"
+                  h="85%"
                 >
-                  Ainda não há anúncios cadastrados
-                </Text>
-              </VStack>
-            )}
+                  <Text
+                    color="gray.300"
+                    fontSize="sm"
+                    fontFamily="body"
+                    textAlign="center"
+                  >
+                    Ainda não há anúncios cadastrados
+                  </Text>
+                </VStack>
+              );
+            }}
           />
         </HStack>
 
