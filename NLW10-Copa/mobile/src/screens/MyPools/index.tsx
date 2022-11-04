@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import { Text, VStack, Icon } from "native-base";
 import { Octicons } from "@expo/vector-icons";
 
@@ -6,6 +7,12 @@ import { Button } from "../../components/Button";
 import { Header } from "../../components/Header";
 
 export function MyPools() {
+  const navigation = useNavigation();
+
+  function handleNavigateToFindPolls() {
+    navigation.navigate("find_poll");
+  }
+
   return (
     <VStack bg="gray.900" flex={1}>
       <Header title="Meus bolões" />
@@ -23,6 +30,7 @@ export function MyPools() {
           leftIcon={
             <Icon as={Octicons} name="search" color="black" size="md" />
           }
+          onPress={handleNavigateToFindPolls}
         />
       </VStack>
 

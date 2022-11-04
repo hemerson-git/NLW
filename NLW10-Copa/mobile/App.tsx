@@ -12,11 +12,8 @@ import { THEME } from "./src/styles/theme";
 import { Loading } from "./src/components/Loading";
 
 // PAGES
-import { SignIn } from "./src/screens/SignIn";
 import { AuthContextProvider } from "./src/contexts/AuthContext";
-import { NewPool } from "./src/screens/NewPool";
-import { FindPool } from "./src/screens/FindPool";
-import { MyPools } from "./src/screens/MyPools";
+import { Routes } from "./src/routes";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -34,7 +31,7 @@ export default function App() {
           backgroundColor="transparent"
         />
 
-        {!fontsLoaded ? <Loading /> : <SignIn />}
+        {!fontsLoaded ? <Loading /> : <Routes />}
       </AuthContextProvider>
     </NativeBaseProvider>
   );
