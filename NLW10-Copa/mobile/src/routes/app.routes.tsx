@@ -3,8 +3,8 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { PlusCircle, SoccerBall } from "phosphor-react-native";
 
 // SCREENS
-import { NewPool } from "../screens/NewPool";
-import { MyPools } from "../screens/MyPools";
+import { NewPool } from "../screens/NewPoll";
+import { MyPools } from "../screens/MyPolls";
 import { useTheme } from "native-base";
 import { FindPool } from "../screens/FindPool";
 
