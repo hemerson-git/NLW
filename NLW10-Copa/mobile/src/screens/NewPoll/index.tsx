@@ -28,10 +28,10 @@ export function NewPool() {
     try {
       setIsLoading(true);
 
-      await API.post("/polls", { title: pollTitle });
+      await API.post("/polls", { title: pollTitle.toUpperCase() });
 
       toast.show({
-        title: "Não foi possível enviar o bolão",
+        title: "Bolão criado com sucesso!",
         placement: "top",
         bg: "green.500",
       });

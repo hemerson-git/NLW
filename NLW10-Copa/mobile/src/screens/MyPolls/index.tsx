@@ -24,6 +24,10 @@ export function MyPools() {
     navigation.navigate("find_poll");
   }
 
+  function handleNavigateToPoll(id: string) {
+    navigation.navigate("details", { id });
+  }
+
   useFocusEffect(
     useCallback(() => {
       (async () => {
@@ -73,10 +77,15 @@ export function MyPools() {
         <FlatList
           data={polls}
           keyExtractor={(poll) => poll.id}
-          renderItem={({ item }) => <PollCard data={item} />}
+          renderItem={({ item }) => (
+            <PollCard
+              data={item}
+              onPress={() => handleNavigateToPoll(item.id)}
+            />
+          )}
           px={5}
           showsVerticalScrollIndicator={false}
-          _contentContainerStyle={{ pb: 10 }}
+          _contentContainerStyle={{ pb: 20 }}
           ListEmptyComponent={() => <EmptyPoolList />}
         />
       )}
