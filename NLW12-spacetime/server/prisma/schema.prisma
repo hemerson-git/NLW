@@ -17,8 +17,6 @@ model User {
   login     String
   avatarUrl String
   memories  Memory[]
-
-  @@map("users")
 }
 
 model Memory {
