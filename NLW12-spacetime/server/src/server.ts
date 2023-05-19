@@ -22,6 +22,6 @@ if (process.env.JWT_SECRET)
 app.register(memoriesRoutes)
 app.register(authRoutes)
 
-app.listen({ port: 3335 }).then(() => {
+app.listen({ port: 3333, host: '0.0.0.0' }).then(() => {
   console.log(`server running on port 3333`)
 })
