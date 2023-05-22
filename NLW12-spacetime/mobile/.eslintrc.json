@@ -1,0 +1,11 @@
+{
+  "extends": [
+    "@rocketseat/eslint-config/react"
+  ],
+  "ignorePatterns": [
+    "node_modules/"
+  ],
+  "rules": {
+    "camelcase": "off"
+  }
+}
