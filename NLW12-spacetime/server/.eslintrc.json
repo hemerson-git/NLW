@@ -4,5 +4,8 @@
   ],
   "rules": {
     "camelcase": "off"
-  }
+  },
+  "ignorePatterns": [
+    "node_modules/"
+  ]
 }
