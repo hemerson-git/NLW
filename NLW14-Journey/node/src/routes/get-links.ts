@@ -3,7 +3,7 @@ import { ZodTypeProvider } from "fastify-type-provider-zod";
 import z from "zod";
 import { prisma } from "../lib/prisma";
 
-export async function confirmTrip(app: FastifyInstance) {
+export async function getLinks(app: FastifyInstance) {
   app.withTypeProvider<ZodTypeProvider>().get(
     "/trips/:tripId/links",
     {
@@ -16,15 +16,22 @@ export async function confirmTrip(app: FastifyInstance) {
     async (req, res) => {
       const { tripId } = req.params;
 
-      const activities = await prisma.activity.findMany({
+      const trip = await prisma.trip.findUnique({
         where: {
-          trip_id: tripId,
+          id: tripId,
+        },
+        include: {
+          links: true,
         },
       });
 
-      if (!activities) {
-        throw new Error("No activities found!");
+      if (!trip) {
+        throw new Error("Trip not found!");
       }
+
+      res.send({
+        links: trip.links,
+      });
     }
   );
 }

@@ -22,7 +22,11 @@ export async function getActivities(app: FastifyInstance) {
           id: tripId,
         },
         include: {
-          activities: true,
+          activities: {
+            orderBy: {
+              occurs_at: "asc",
+            },
+          },
         },
       });
 
@@ -37,9 +41,17 @@ export async function getActivities(app: FastifyInstance) {
 
       const activities = Array.from({
         length: diffInDaysBetweenTripStartEnd + 1,
+      }).map((_, index) => {
+        const date = dayjs(trip.starts_at).add(index, "days");
+        return {
+          date: date.toDate(),
+          activities: trip.activities.filter((activity) => {
+            return dayjs(activity.occurs_at).isSame(date, "day");
+          }),
+        };
       });
 
-      return trip.activities;
+      return { activities };
     }
   );
 }
